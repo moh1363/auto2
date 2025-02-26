@@ -47,4 +47,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function postTitle()
+    {
+        return $this->belongsTo('App\Models\PostTitle','post_title_id','id');
+    }
 }

@@ -1,85 +1,62 @@
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu">
-                  <li class="active">
-                      <a class="" href="{{url('/index')}}">
-                          <i class="icon-dashboard"></i>
-                          <span>صفحه اصلی</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon-book"></i>
-                          <span> {{__('users')}}</span>
-                          <span class="arrow"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="{{route('users.index')}}">{{__('users.index')}}</a></li>
-                          
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon-cogs"></i>
-                          <span>کامنت ها</span>
-                          <span class="arrow"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="grids.html">گرید</a></li>
-                          <li><a class="" href="calendar.html">تقویم</a></li>
-                          <li><a class="" href="charts.html">چارت</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon-tasks"></i>
-                          <span>ابزارهای فرم</span>
-                          <span class="arrow"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="form_component.html">کامنت فرم</a></li>
-                          <li><a class="" href="form_wizard.html">فرم Wizard</a></li>
-                          <li><a class="" href="form_validation.html">ارزیابی فرم</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon-th"></i>
-                          <span>اطلاعات جدول</span>
-                          <span class="arrow"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="basic_table.html">جدول ساده</a></li>
-                          <li><a class="" href="dynamic_table.html">جدول داینامیک</a></li>
-                      </ul>
-                  </li>
-                  <li>
-                      <a class="" href="inbox.html">
-                          <i class="icon-envelope"></i>
-                          <span>ایمیل </span>
-                          <span class="label label-danger pull-right mail-info">2</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon-glass"></i>
-                          <span>عناصر اضافی</span>
-                          <span class="arrow"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="blank.html">صفحه خالی</a></li>
-                          <li><a class="" href="profile.html">پروفایل</a></li>
-                          <li><a class="" href="invoice.html">فاکتور</a></li>
-                          <li><a class="" href="404.html">404 Error</a></li>
-                          <li><a class="" href="500.html">500 Error</a></li>
-                      </ul>
-                  </li>
-                  <li>
-                      <a class="" href="login.html">
-                          <i class="icon-user"></i>
-                          <span>صفحه ورود به سایت</span>
-                      </a>
-                  </li>
-              </ul>
-              <!-- sidebar menu end-->
+<!-- Brand Logo -->
+<a href="index3.html" class="brand-link">
+      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">پنل مدیریت</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar" style="direction: ltr">
+      <div style="direction: rtl">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="https://www.gravatar.com/avatar/52f0fbcbedee04a121cba8dad1174462?s=200&d=mm&r=g" class="img-circle elevation-2" alt="User Image">
           </div>
+          <div class="info">
+            <a href="#" class="d-block"> {{Auth::user->id}}</a>
+          </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
+ 
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-pie-chart"></i>
+                <p>
+                  {{__('users.index')}}
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('users.index')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p> {{__('users.index')}} </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('post-titles.index')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>{{__('posttitle.index')}} </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/charts/inline.html" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>نمودار Inline</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+      
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+    </div>
+    <!-- /.sidebar -->

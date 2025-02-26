@@ -1,104 +1,122 @@
+@php
+use Illuminate\Support\Facades\Auth;
+@endphp
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Mosaddek">
-	<script type="text/javascript" src="{{asset('js/website.js')}}"></script>
-    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-    <link rel="shortcut icon" href="{{asset('img/favicon.html')}}">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>  @yield('title')  </title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{asset('plugins/font-awesome/css/font-awesome.min.css')}}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="{{asset('/dist/css/ionicons.min.css')}}">
 
-    <title>FlatLab - Flat & Responsive Bootstrap Admin Template</title>
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/sweetalert2.min.css')}}">
 
-    <!-- Bootstrap core CSS -->
-    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{(asset('css/bootstrap-reset.css'))}}" rel="stylesheet">
-    <!--external css-->
-    <link href="{{asset('assets/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
-    <link href="{{asset('assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css')}}" rel="stylesheet" type="text/css" media="screen"/>
-    <link rel="stylesheet" href="{{asset('css/owl.carousel.css')}}" type="text/css">
-    <!-- Custom styles for this template -->
-    <link href="{{asset('css/style.css')}}" rel="stylesheet">
-    <link href="{{asset('css/style-responsive.css')}}" rel="stylesheet" />
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{{asset('plugins/iCheck/flat/blue.css')}}">
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="{{asset('plugins/morris/morris.css')}}">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="{{asset('plugins/jvectormap/jquery-jvectormap-1.2.2.css')}}">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="{{asset('plugins/datepicker/datepicker3.css')}}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker-bs3.css')}}">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- bootstrap rtl -->
+  <link rel="stylesheet" href="{{asset('dist/css/bootstrap-rtl.min.css')}}">
+  <!-- template rtl version -->
+  <link rel="stylesheet" href="{{asset('dist/css/custom-style.css')}}">
+  <script src="{{asset('plugins/datatables/jquery.dataTables.js')}}"></script>
+<script src="{{asset('plugins/datatables/dataTables.bootstrap4.js')}}"></script>
+<link rel="stylesheet" href="{{asset('plugins/datatables/dataTables.bootstrap4.css')}}">
+<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
+</head>
+<body class="hold-transition sidebar-mini">
 
-    <title>@yield('title')</title>
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand bg-success navbar-light border-bottom">
+   @include('Layouts.navbar')
+  </nav>
+  <!-- /.navbar -->
 
-  </head>
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    @include('Layouts.sidebar')
+  </aside>
 
-  <body>
-  <section id="container" class="">
-      <!--header start-->
-      <header class="header white-bg">
+  <!-- Content Wrapper. Contains page content -->
+    <!-- Content Header (Page header) -->
+    
+    <!-- /.content-header -->
 
-    @include('Layouts.header')
-</header>
-      <!--header end-->
-      <!--sidebar start-->
-      <aside>
-      @include('Layouts.sidebar')
+    <!-- Main content -->
+    <section class="content">
+      @yield('content')
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>CopyLeft &copy; 2018 <a href="http://github.com/hesammousavi/">حسام موسوی</a>.</strong>
+  </footer>
 
-</aside>
-      <!--sidebar end-->
-      <!--main content start-->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+<!-- ./wrapper -->
 
-      <section id="main-content">
-          <section class="wrapper">
-                  @yield('content')
-</section>
-</section>
+<!-- jQuery -->
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
 
+<!-- Bootstrap 4 -->
+<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
+<!-- Morris.js charts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="{{asset('plugins/morris/morris.min.js')}}"></script>
+<!-- Sparkline -->
+<script src="plugins/sparkline/jquery.sparkline.min.js"></script>
+<!-- jvectormap -->
+<script src="{{asset('plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
+<script src="{{asset('plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
+<!-- jQuery Knob Chart -->
+<script src="{{asset('plugins/knob/jquery.knob.js')}}"></script>
+<!-- daterangepicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+<script src="{{asset('plugins/daterangepicker/daterangepicker.js')}}"></script>
+<!-- datepicker -->
+<script src="{{asset('plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
+<!-- Slimscroll -->
+<script src="{{asset('plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
+<!-- FastClick -->
+<script src="{{asset('plugins/fastclick/fastclick.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{asset('dist/js/adminlte.js')}}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{asset('dist/js/demo.js')}}"></script>
+<script src="{{asset('dist/js/sweetalert2.all.min.js')}}"></script>
 
-                
-
-
-
- <!-- js placed at the end of the document so the pages load faster -->
- <script src="{{asset('js/jquery.js')}}"></script>
-    <script src="{{asset('js/jquery-1.8.3.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/jquery.scrollTo.min.js')}}"></script>
-    <script src="{{asset('js/jquery.nicescroll.js')}}" type="text/javascript"></script>
-    <script src="{{asset('js/jquery.sparkline.js')}}" type="text/javascript"></script>
-    <script src="{{asset('assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js')}}"></script>
-    <script src="{{asset('js/owl.carousel.js')}}" ></script>
-    <script src="{{asset('js/jquery.customSelect.min.js')}}" ></script>
-
-    <!--common script for all pages-->
-    <script src="{{asset('js/common-scripts.js')}}"></script>
-
-    <!--script for this page-->
-    <script src="{{asset('js/sparkline-chart.js')}}"></script>
-    <script src="{{asset('js/easy-pie-chart.js')}}"></script>
-
-  <script>
-
-      //owl carousel
-
-      $(document).ready(function() {
-          $("#owl-demo").owlCarousel({
-              navigation : true,
-              slideSpeed : 300,
-              paginationSpeed : 400,
-              singleItem : true
-
-          });
-      });
-
-      //custom select box
-
-      $(function(){
-          $('select.styled').customSelect();
-      });
-
-  </script>
-
-  </body>
+</body>
 </html>

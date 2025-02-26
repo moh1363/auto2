@@ -6,15 +6,16 @@
 
     "menu": "منو",
     "create" : "ایجاد",
+    "edit" : "ویرایش",
+    "delete" : "حذف",
+
 
     "users": "کاربران",
     "users.index": "لیست کاربران",
     "users.create": "ایجاد کاربر جدید",
-
     "users.new": "ساخت کاربر جدید",
     "users.edit": "ویرایش کاربر",
     "users.show": "مشاهده کاربر",
-
     "users.personnel_id": "شماره پرسنلی",
     "users.firstname": "نام",
     "users.title": "عنوان شغلی",
@@ -33,14 +34,12 @@
     "time_attendance.createdBy": "بارگزاری توسط",
     "time_attendance.createdAt": "زمان",
     "time_attendance.status": "وضعیت",
-
     "time_attendance": "ورود و خروج",
     "time_attendance_sheet.index": "فایل های ورود و خروج",
     "time_attendance.upload": "بارگزاری فایل ورود و خروج",
     "time_attendance.title": "عنوان فایل",
     "time_attendance.title.placeholder": "فایل ورود و خروج آذر ماه ۱۴۰۱",
     "time_attendance.file": "آدرس فایل",
-
     "time_attendance.person": "ورود و خروج کاربر :name",
     "time_attendance.graph": "نمودار ورود و خروج",
     "time_attendance.list": "لیست ورود و خروج",
@@ -49,7 +48,16 @@
     "time_attendance.date": "تاریخ",
     "time_attendance.arrival_time": "ساعت ورود",
     "time_attendance.departure_time": "ساعت خروچ",
-    "time_attendance.hourly_leave": "مرخصی ساعتی"
+    "time_attendance.hourly_leave": "مرخصی ساعتی",
+
+    "posttitle.title" : "عنوان پست",
+    "posttitle.index" : "لیست عناوین پستی",
+    "posttitle.parent_id" : " سلسله مراتب",
+    "posttitle.create": "ایجاد عنوان پست  جدید",
+    "posttitle.edit": "ویرایش عنوان پست  "
+
+
+
 
    
 
