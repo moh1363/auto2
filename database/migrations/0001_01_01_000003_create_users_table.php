@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('personnel_id')->unique();
             $table->string('phone')->nullable();
+            $table->string('mande_morakhasi')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('post_title_id')->unsigned();

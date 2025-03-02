@@ -9,6 +9,7 @@
     "edit" : "ویرایش",
     "delete" : "حذف",
 
+    "users.managment": "مدیریت کاربران",
 
     "users": "کاربران",
     "users.index": "لیست کاربران",
@@ -18,6 +19,7 @@
     "users.show": "مشاهده کاربر",
     "users.personnel_id": "شماره پرسنلی",
     "users.firstname": "نام",
+    "users.mande_morakhasi": "مانده مرخصی",
     "users.title": "عنوان شغلی",
     "users.phone": "شماره تلفن",
     "submit" : "تایید",
@@ -54,11 +56,30 @@
     "posttitle.index" : "لیست عناوین پستی",
     "posttitle.parent_id" : " سلسله مراتب",
     "posttitle.create": "ایجاد عنوان پست  جدید",
-    "posttitle.edit": "ویرایش عنوان پست  "
+    "posttitle.edit": "ویرایش عنوان پست  ",
+
+    "morakhasi.index": "لیست مرخصیها ",
+    "morakhasi.create": "درخواست مرخصی",
+    "morakhasi.form": "فرم درخواست مرخصی",
+    "morakhasi.start_date": "از تاریخ",
+    "morakhasi.end_date": "لغایت",
+    "morakhasiapproval.index": "لیست مرخصی جهت تایید",
+    "morakhasi.tomanager": "مدیریت محترم گروه",
+    "morakhasi.comments": "  توضیحات :",
+    "morakhasi.days_number": " روز",
+    "morakhasi.status": " وضعیت",
+    "morakhasi.status.pending": " درحال بررسی",
+    "morakhasi.status.approved": " تایید شده",
+    "morakhasi.status.rejected": " رد شده",
+    "morakhasi.user": "درخواست کننده",
+
+    "personal.file": "پرونده پرسنلی",
+    "personal.file.morakhasi": "مرخصی",
+    "personal.file.show": "مشاهده پروفایل"
 
 
 
 
-   
+
 
 }
