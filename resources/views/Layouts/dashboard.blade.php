@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
   <link rel="stylesheet" href="{{asset('plugins/font-awesome/css/font-awesome.min.css')}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{asset('/dist/css/ionicons.min.css')}}">
+  <link rel="stylesheet" href="{{asset('/dist/css/jalalidatepicker.min.css')}}">
 
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
@@ -57,7 +58,7 @@ use Illuminate\Support\Facades\Auth;
 
   <!-- Content Wrapper. Contains page content -->
     <!-- Content Header (Page header) -->
-    
+
     <!-- /.content-header -->
 
     <!-- Main content -->
@@ -68,7 +69,7 @@ use Illuminate\Support\Facades\Auth;
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>CopyLeft &copy; 2018 <a href="http://github.com/hesammousavi/">حسام موسوی</a>.</strong>
+    <strong>CopyLeft &copy; 2025 </strong>
   </footer>
 
   <!-- Control Sidebar -->
@@ -117,6 +118,8 @@ use Illuminate\Support\Facades\Auth;
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
 <script src="{{asset('dist/js/sweetalert2.all.min.js')}}"></script>
-
+<script type="text/javascript" src="{{asset('/dist/js/jalalidatepicker.js')}}"></script>
+<script>jalaliDatepicker.startWatch();
+</script>
 </body>
 </html>

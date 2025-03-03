@@ -26,9 +26,9 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
-           
+
             <!-- /.card-header -->
-           
+
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
@@ -56,18 +56,18 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputName">{{__('users.firstname')}}</label>
-                <input type="text" class="form-control" name="firstname" id="inputName" >
+                <input type="text" class="form-control" name="firstname" id="inputName" value="{{old('firstname')}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="inputFamily">{{__('users.lastname')}}</label>
-                <input type="text" class="form-control" name="lastname" id="inputFamily" >
+                <input type="text" class="form-control" name="lastname" id="inputFamily" value="{{old('lastname')}}" >
             </div>
         </div>
         <div class="form-row">
         <div class="form-group col-md-6">
             <label>{{__('posttitle.title')}}</label>
-            <select name="post_title_id" class="form-control select2" style="width: 100%;" >
-            
+            <select name="post_title_id" class="form-control select2" style="width: 100%;" value="{{old('post_title_id')}}">
+
                 @foreach($posttitles as $posttitle)
                 <option value="{{$posttitle->id}}">{{$posttitle->title}}</option>
                 @endforeach
@@ -75,19 +75,19 @@
         </div>
             <div class="form-group col-md-6">
                 <label for="inputPhone">{{__('users.email')}}</label>
-                <input type="tel" name="email" class="form-control"  id="inputPhone" >
+                <input type="tel" name="email" class="form-control"  id="inputPhone" value="{{old('email')}}">
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputName">{{__('users.phone')}}</label>
-                <input type="number" class="form-control"  name="phone" id="inputName" >
+                <input type="number" class="form-control"  name="phone" id="inputName" value="{{old('phone')}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="inputFamily">{{__('users.personnel_id')}}</label>
-                <input type="number" class="form-control" name="personnel_id" id="inputFamily" >
+                <input type="number" class="form-control" name="personnel_id" id="inputFamily" value="{{old('personnel_id')}}">
             </div>
-            
+
         </div>
         <button type="submit" class="btn btn-primary">{{__('submit')}}</button>
     </form>

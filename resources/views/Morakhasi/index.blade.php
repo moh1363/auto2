@@ -1,6 +1,6 @@
 @extends('Layouts.dashboard')
 @section('title')
-    {{__('users.show')}}
+    {{__('morakhasi.index')}}
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -10,12 +10,12 @@
         <div class="row mb-2">
           <div class="col-sm-6">
 
-            <h1> {{__('users.show')}}</h1>
+            <h1> {{__('morakhasi.index')}}</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="#">خانه</a></li>
-              <li class="breadcrumb-item active"> {{__('users.show')}}</li>
+              <li class="breadcrumb-item active"> {{__('morakhasi.index')}}</li>
 
             </ol>
           </div>
@@ -37,7 +37,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">{{__('users.show')}}</h3>
+              <h3 class="card-title">{{__('morakhasi.index')}}</h3>
               @include('Layouts.messages')
 
             </div>
@@ -45,51 +45,40 @@
             <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
                  <thead>
-                                    <tr style="background-color:yellow">
-                                        <th>{{__('users.firstname')}}</th>
-                                        <th >{{__('users.lastname')}}</th>
-                                        <th>{{__('users.personnel_id')}}</th>
+                                    <tr>
+                                        <th>{{__('morakhasi.start_date')}}</th>
+                                        <th >{{__('morakhasi.end_date')}}</th>
+                                        <th >{{__('morakhasi.days_number')}}</th>
+                                        <th >{{__('morakhasi.status')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
+                                    @foreach($morakhasis as $morakhasi)
                                     <tr>
-                                        <td>{{$user->firstname}}</td>
-                                        <td>{{$user->lastname}}</td>
-                                        <td>{{$user->personnel_id}}</td>
-                                        </tr>
-                                        <tr style="background-color:yellow">
-                                        <th>{{__('users.email')}}</th>
-                                        <th >{{__('users.phone')}}</th>
-                                        <th>{{__('users.title')}}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                                        <td>{{$morakhasi->start_date}}</td>
+                                        <td>{{$morakhasi->end_date}}</td>
+                                        <td>{{$morakhasi->days_number}}</td>
+                                        <td>@if($morakhasi->status=='pending')
+                                        <span class="badge badge-warning">{{__('morakhasi.status.pending')}}</span>
+                                                @elseif($morakhasi->status=='approved')
+                                                    <span class="badge badge-primary">{{__('morakhasi.status.approved')}}</span>
+                                                @elseif($morakhasi->status=='rejected')
+                                                    <span class="badge badge-danger">{{__('morakhasi.status.rejected')}}</span>
+                                                @endif
+                                        </td>
 
-                                    <tr>
-                                        <td>{{$user->email}}</td>
-                                        <td>{{$user->phone}}</td>
-                                        <td>{{$user->postTitle->title}}</td>
                                         </tr>
 
+                                        @endforeach
 
 </tbody>
-                <tr style="background-color:yellow">
-                    <th>{{__('users.mande_morakhasi')}}</th>
-
-                </tr>
-                </thead>
-                <tbody>
-
-                <tr>
-                    <td>{{$user->mande_morakhasi}}</td>
-
-                </tr>
-
-
-                </tbody>
 </table>
+<div class="card">
 
+            <div class="card-body">
+<a href="{{route('morakhasi.create')}}" class="btn btn-primary">{{__('morakhasi.create')}}</a>
+</div>
 </div>
             </div>
             <!-- /.card-body -->

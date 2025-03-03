@@ -52,4 +52,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\PostTitle','post_title_id','id');
     }
+    public function morakhasis()
+    {
+        return $this->belongsToMany(Morakhasi::class,'morakhasi_user');
+    }
 }

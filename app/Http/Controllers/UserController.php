@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\PostTitle;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
-use lang;
 
 class UserController extends Controller
 {
     public function index()
     {
         $users=User::all();
-        
+
         return view ('Users.index',compact('users'));
     }
     public function create(){
@@ -104,5 +104,5 @@ class UserController extends Controller
 
         return view ('users.show',compact('posttitles','user'));
     }
-   
+
 }
