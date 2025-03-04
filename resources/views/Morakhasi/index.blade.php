@@ -50,6 +50,8 @@
                                         <th >{{__('morakhasi.end_date')}}</th>
                                         <th >{{__('morakhasi.days_number')}}</th>
                                         <th >{{__('morakhasi.status')}}</th>
+                                        <th >{{__('actions')}}</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -67,6 +69,7 @@
                                                     <span class="badge badge-danger">{{__('morakhasi.status.rejected')}}</span>
                                                 @endif
                                         </td>
+                                        <td><a href="{{route('morakhasi.show',$morakhasi->id)}}"><i class="fa fa-eye"></i></a></td>
 
                                         </tr>
 

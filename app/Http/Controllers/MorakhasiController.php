@@ -15,7 +15,7 @@ class MorakhasiController extends Controller
      */
     public function index()
     {
-        $morakhasis=Morakhasi::all();
+        $morakhasis=Morakhasi::where('user_id',auth()->user()->id)->get();
         return view('Morakhasi.index', compact('morakhasis'));
     }
 
@@ -24,7 +24,8 @@ class MorakhasiController extends Controller
      */
     public function create()
     {
-        return view('Morakhasi.create');
+        $mande_morakhasi=auth()->user()->mande_morakhasi;
+        return view('Morakhasi.create',compact('mande_morakhasi'));
     }
 
     /**
@@ -41,12 +42,11 @@ class MorakhasiController extends Controller
             'type' => 'required|string',
         ]);
         $folderPath = 'morakhasi/' . $request->user_id ;
-
         if ($request->hasFile('files')) {
-            $filePaths = []; // برای نگهداری مسیر فایل‌ها
+            $filePaths = [];
 
             foreach ($request->file('files') as $file) {
-                $filePaths[] = $file->store($folderPath, 'public'); // ذخیره فایل‌ها در پوشه 'leave_files'
+                $filePaths[] = $file->store($folderPath, 'public');
             }
         $morakhasi=Morakhasi::create([
             'user_id' => auth()->id(),
@@ -65,7 +65,6 @@ class MorakhasiController extends Controller
            MorakhasiApproval::create([
                'morakhasi_id'=>$morakhasi->id,
                'approver_id'=>1,
-               'is_checked'=>0,
                'view_time'=>0
            ]);
         }}else{
@@ -85,21 +84,27 @@ class MorakhasiController extends Controller
                 MorakhasiApproval::create([
                     'morakhasi_id'=>$morakhasi->id,
                     'approver_id'=>1,
-                    'is_checked'=>0,
                     'view_time'=>0
                 ]);
-        }
+        }}
         return redirect()->route('morakhasi.index')->with('success', 'مرخصی با موفقیت ثبت گردید.');
-    }}
+    }
 
     /**
      * Display the specified resource.
      */
 
 
-    public function show(Morakhasi $morakhasi)
+    public function show($id)
     {
-        return view ('Morakhasi.show',compact('morakhasi'));
+        $morakhasi=Morakhasi::find($id);
+
+        $files = json_decode($morakhasi->files, true) ?? [];
+
+        $approval=MorakhasiApproval::where('morakhasi_id',$id)->where('approver_id',1)->first();
+        $user=User::find($morakhasi->user_id);
+
+        return view ('Morakhasi.show',compact('morakhasi','user','approval','files'));
     }
 
     /**

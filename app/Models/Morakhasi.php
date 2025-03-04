@@ -10,6 +10,6 @@ class Morakhasi extends Model
 
     public function users()
     {
-        return $this->belongsToMany(users::class,'morakhasi_user');
+        return $this->belongsToMany(users::class);
     }
 }

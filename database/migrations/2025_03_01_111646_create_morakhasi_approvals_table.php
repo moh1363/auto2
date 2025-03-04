@@ -16,9 +16,7 @@ return new class extends Migration
             $table->foreignId('morakhasi_id')->constrained()->onDelete('cascade');
             $table->foreignId('approver_id')->constrained('users')->onDelete('cascade');
             $table->text('comments')->nullable();
-            $table->string('is_checked')->nullable();
             $table->text('view_time')->nullable();
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->date('approved_time')->nullable();
             $table->timestamps();
         });

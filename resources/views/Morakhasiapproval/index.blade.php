@@ -51,7 +51,7 @@
                                     <th>{{__('morakhasi.start_date')}}</th>
                                     <th >{{__('morakhasi.end_date')}}</th>
                                     <th >{{__('morakhasi.days_number')}}</th>
-                                    <th >{{__('action')}}</th>
+                                    <th >{{__('actions')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -67,7 +67,7 @@
                                         <td>{{$morakhasi->morakhasi->end_date}}</td>
                                         <td>{{$morakhasi->morakhasi->days_number}}</td>
 
-                                        <td> <a href="{{route('approval.show',$morakhasi->id)}}">show</a>
+                                        <td> <a href="{{route('approval.show',$morakhasi->id)}}"><i class="fa fa-eye"></i></a>
 
                                         </td>
 

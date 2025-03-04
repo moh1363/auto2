@@ -7,20 +7,14 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-<<<<<<< HEAD
-=======
         "hekmatinasser/verta": "^8.4",
->>>>>>> 8dafd2666d58675e609a663b1720219b0a490da6
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
         "spatie/laravel-permission": "^6.15"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
-<<<<<<< HEAD
-=======
         "laravel/breeze": "^2.3",
->>>>>>> 8dafd2666d58675e609a663b1720219b0a490da6
         "laravel/pail": "^1.1",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",

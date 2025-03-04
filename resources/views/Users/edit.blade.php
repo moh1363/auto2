@@ -26,9 +26,9 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
-           
+
             <!-- /.card-header -->
-           
+
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
@@ -59,7 +59,7 @@
         <div class="form-group col-md-6">
             <label>{{__('posttitle.title')}}</label>
             <select name="post_title_id" class="form-control select2" style="width: 100%;" >
-            
+
                 @foreach($posttitles as $posttitle)
                 <option value="{{$posttitle->id}}">{{$posttitle->title}}</option>
                 @endforeach
@@ -79,8 +79,25 @@
                 <label for="inputFamily">{{__('users.personnel_id')}}</label>
                 <input type="number" class="form-control" name="personnel_id" id="inputFamily" value="{{$user->personnel_id}}" >
             </div>
-            
+
         </div>
+        <div class="form-group col-md-6">
+          <label for="inputFamily">{{__('users.mande_morakhasi')}}</label>
+          <input value="{{$user->mande_morakhasi}}" type="number" class="form-control" name="mande_morakhasi" id="inputFamily" value="{{old('mande_morakhasi')}}">
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Role:</strong>
+                <select name="roles[]" class="form-control" multiple="multiple">
+                    @foreach ($roles as $value => $label)
+                        <option value="{{ $value }}" {{ isset($userRole[$value]) ? 'selected' : ''}}>
+                            {{ $label }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
         <button type="submit" class="btn btn-primary">{{__('edit')}}</button>
     </form>
     </div>

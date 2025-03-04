@@ -3,17 +3,20 @@
     "username": "نام کاربری",
     "password": "رمز عبور",
     "login": "ورود",
-
+    "day" : "روز",
     "menu": "منو",
     "create" : "ایجاد",
     "edit" : "ویرایش",
     "delete" : "حذف",
-
+    "row": "ردیف",
     "users.managment": "مدیریت کاربران",
 
     "users": "کاربران",
     "users.index": "لیست کاربران",
+    "roles.index": "لیست نقش ها",
     "users.create": "ایجاد کاربر جدید",
+    "roles.create": "ایجاد نقش جدید",
+    "permission.create": "ایجاد دسترسی جدید",
     "users.new": "ساخت کاربر جدید",
     "users.edit": "ویرایش کاربر",
     "users.show": "مشاهده کاربر",
@@ -75,11 +78,15 @@
 
     "personal.file": "پرونده پرسنلی",
     "personal.file.morakhasi": "مرخصی",
-    "personal.file.show": "مشاهده پروفایل"
+    "personal.file.show": "مشاهده پروفایل",
+    "create.role" : "ایجاد نقش",
+    "create.permissions" : "ایجاد دسترسی",
+    "skills.manager" : "مدیریت مهارت ها",
+    "skills.title" : "عنوان مهارت",
+    "skills.description" : "توضیحات",
 
-
-
-
-
-
+    "training.file": "پرونده آموزشی",
+    "training.title": "عنوان مهارت",
+    "training.level": "سطح مهارت",
+    "my.training" : "لیست مهارتهای من"
 }

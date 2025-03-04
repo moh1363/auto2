@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\Skill;
 
 class User extends Authenticatable
 {
@@ -55,5 +56,9 @@ class User extends Authenticatable
     public function morakhasis()
     {
         return $this->belongsToMany(Morakhasi::class,'morakhasi_user');
+    }
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class)->withPivot('level', 'approved_time', 'created_by', 'status', 'approved_by', 'files', 'description');
     }
 }

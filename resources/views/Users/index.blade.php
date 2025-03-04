@@ -59,14 +59,14 @@
                                         <td>{{$user->firstname}}</td>
                                         <td>{{$user->lastname}}</td>
                                         <td>{{$user->postTitle->title}}</td>
-                                        <td>
+                                        <td><span style="float: right" ><a href="{{ route('users.edit', $user->id) }}"><i class="fa fa-edit"></i></a></span>
+                                          <span style="float: right" ><a href="{{ route('users.show', $user->id) }}" title="{{__('show')}}"><i class="fa fa-eye"></i></a></span>
                                         <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="delete-form">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger delete-btn">{{__('delete')}}</button>
+        <button class="fa fa-trash" style="float: right" type="submit" ></button>
       </form>
-      <span float:left><a href="{{ route('users.edit', $user->id) }}">{{__('edit')}}</a></span>
-      <span float:left><a href="{{ route('users.show', $user->id) }}">{{__('show')}}</a></span>
+      
 
                                         </td>
                                         </tr>

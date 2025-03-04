@@ -35,7 +35,10 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">{{__('morakhasi.form')}}</h3>
+              <h3 class="card-title">{{__('morakhasi.form')}}
+                <span style="float: left" class="badge badge-success">{{__('users.mande_morakhasi')}} شما : {{$mande_morakhasi}}{{__('day')}} </span>
+
+              </h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">

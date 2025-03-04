@@ -1,5 +1,6 @@
 @php
-$countapprovals=\App\Models\MorakhasiApproval::where('approver_id',auth()->user()->id)->where('is_checked',0)->get();
+
+$countapprovals=\App\Models\MorakhasiApproval::where('approved_time',null)->get();
 @endphp
 <!-- Brand Logo -->
 <a href="#" class="brand-link ">
@@ -13,9 +14,9 @@ $countapprovals=\App\Models\MorakhasiApproval::where('approver_id',auth()->user(
       <div style="direction: rtl">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
+          {{-- <div class="image">
             <img src="https://www.gravatar.com/avatar/52f0fbcbedee04a121cba8dad1174462?s=200&d=mm&r=g" class="img-circle elevation-2" alt="User Image">
-          </div>
+          </div> --}}
           <div class="info">
             <a href="{{route('users.show',auth()->user()->id)}}" class="d-block">{{auth()->user()->firstname}}{{auth()->user()->lastname}}</a>
           </div>
@@ -26,8 +27,9 @@ $countapprovals=\App\Models\MorakhasiApproval::where('approver_id',auth()->user(
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
+              @if(auth()->user()->can('مدیریت کاربران'))
 
-            <li class="nav-item has-treeview">
+              <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-users"></i>
                 <p>
@@ -48,10 +50,19 @@ $countapprovals=\App\Models\MorakhasiApproval::where('approver_id',auth()->user(
                     <p>{{__('posttitle.index')}} </p>
                   </a>
                 </li>
+                  <li class="nav-item">
+                      <a href="{{route('roles.index')}}" class="nav-link">
+                          <i class="fa fa-circle-o nav-icon"></i>
+                          <p>{{__('roles.index')}} </p>
+                      </a>
+                  </li>
+
 
               </ul>
 
             </li>
+              @endif
+
               <li class="nav-item has-treeview">
                   <a href="#" class="nav-link">
                       <i class="nav-icon fa fa-user"></i>
@@ -94,7 +105,9 @@ $countapprovals=\App\Models\MorakhasiApproval::where('approver_id',auth()->user(
 
 
           </ul>
-                  @if(count($countapprovals)>0)
+              @can('تایید مرخصی')
+
+              @if(count($countapprovals)>0)
               <li class="nav-item">
                   <a href="{{route('approval.index')}}" class="nav-link">
                       <i class="fa fa-circle-o nav-icon"></i>
@@ -102,6 +115,7 @@ $countapprovals=\App\Models\MorakhasiApproval::where('approver_id',auth()->user(
                   </a>
               </li>
             @endif
+            @endcan
         </nav>
         <!-- /.sidebar-menu -->
       </div>

@@ -15,7 +15,7 @@ class MorakhasiApprovalController extends Controller
      */
     public function index()
     {
-        $approvals=\App\Models\MorakhasiApproval::where('is_checked',0)->get();
+        $approvals=\App\Models\MorakhasiApproval::where('approved_time',null)->get();
         return view ('Morakhasiapproval.index',compact('approvals'));
     }
 
@@ -41,9 +41,15 @@ class MorakhasiApprovalController extends Controller
     public function show($id)
     {
         $morakhasiApproval=MorakhasiApproval::find($id);
+        $morakhasiApproval->update([
+            'view_time'=>now()
+        ]);
+
         $morakhasi=Morakhasi::find($morakhasiApproval->morakhasi_id);
         $user=User::find($morakhasi->user_id);
-        return view ('Morakhasiapproval.show',compact('morakhasiApproval','morakhasi','user'));
+        $files = json_decode($morakhasi->files, true) ?? [];
+
+        return view ('Morakhasiapproval.show',compact('morakhasiApproval','morakhasi','user','files'));
 
     }
 
@@ -63,12 +69,31 @@ class MorakhasiApprovalController extends Controller
     {
         $morakhasiApproval=MorakhasiApproval::find($id);
         $morakhasi=Morakhasi::find($morakhasiApproval->morakhasi_id);
-
+        $user=User::find($morakhasi->user_id);
         if ($request->status == 'approved') {
-
-            $morakhasi->update(['status' => 'approved']);
+            $morakhasiApproval->approved_time=now();
+            $morakhasiApproval->comments=$request->comments;
+            $morakhasiApproval->update();
+            $morakhasi->update(
+                [
+                    'status' => 'approved',
+                ]);
+            $user->mande_morakhasi=$user->mande_morakhasi-$morakhasi->days_number;
+            $user->update();
+            MorakhasiApproval::create([
+                'morakhasi_id'=>$morakhasi->id,
+                'approver_id'=>2,
+                'view_time'=>0
+            ]);
         } elseif ($request->status == 'rejected') {
-            $morakhasi->update(['status' => 'rejected']);
+            $morakhasiApproval->approved_time=now();
+            $morakhasiApproval->comments=$request->comments;
+            $morakhasiApproval->update();
+            $morakhasi->update([
+                'status' => 'rejected',
+                'approved_time'=>now()
+
+            ]);
         }
 
 

@@ -40,44 +40,28 @@
             <!-- /.card-header -->
             <div class="card-body">
 
-                                @include('Layouts.messages')
+             @include('Layouts.messages')
 
-    <form  method="POST" action="{{route('morakhasi.store')}}" enctype="multipart/form-data">
-    @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-        @csrf
+
         <div class="form-inline col-md-12 mb-4" >
             <h3>{{__('morakhasi.tomanager')}} </h3>
         </div>
         <div class="form-inline col-md-12 mb4" >
                 <span>خواهشمنداست با </span>
-                <input type="text" class=" col-xl-3 rounded" name="days_number"  value="{{old('days_number')}}"><span>روز مرخصی</span>
-                <select name="type" class="col-xl-3 rounded">
-                    <option>استحقاقی</option>
-                    <option>استعلاجی</option>
-                    <option>بدون حقوق</option>
-                </select>
+                <input disabled disabled type="text" class=" col-xl-3 rounded" name="days_number"  value="{{$morakhasi->days_number}}"><span>روز مرخصی</span>
+                <input class=" col-xl-3 rounded" value="{{$morakhasi->type}}" disabled>
                 <span>اینجانب</span>
-                <input value="{{auth()->user()->id}}" hidden name="user_id">
-                <input class="col-xl-3 rounded" value="{{auth()->user()->firstname}}{{auth()->user()->lastname}}">
+                <input disabled class="col-xl-3 rounded" value="{{$user->firstname}}{{$user->lastname}}">
 
             </div>
         <br>
         <div class="form-inline col-md-12 mb4" >
-            <input class="col-xl-3 rounded" value="{{auth()->user()->personnel_id}}" name="personnel_id" hidden>
             <span>پرسنلی شماره</span>
-            <input class="col-xl-2 rounded" value="{{auth()->user()->personnel_id}}" >
+            <input disabled class="col-xl-2 rounded" value="{{$user->personnel_id}}" >
             <span>ازتاریخ</span>
-            <input class="col-xl-4 rounded" type="text"  data-jdp name="start_date">
+            <input disabled class="col-xl-4 rounded" type="text"  value="{{$morakhasi->start_date}}" name="start_date">
             <span>تا</span>
-            <input class="col-xl-4 rounded"  type="text"  data-jdp name="end_date">
+            <input disabled class="col-xl-4 rounded"  type="text" value="{{$morakhasi->end_date}}" name="end_date">
         </div>
         <div class="form-inline col-md-12 mb4"  style="padding-top: 20px">
 
@@ -88,18 +72,69 @@
         <div class="col-md-12">
             <label for="contact_info" class="form-label">{{__('morakhasi.comments')}}</label><br>
 
-            <textarea name="comments" style="width: 100%;"> </textarea>
+            <textarea disabled name="comments" style="width: 100%;">{{$morakhasi->comments}} </textarea>
 
         </div>
     <hr>
-        <div class="col-md-8">
-            <label for="files" class="form-label">آپلود فایل‌ها</label>
-            <input type="file" name="files[]" class="form-control" multiple>
+        <div class="card col-md-12">
+            <div class="card-header">
+                <h4>ضمائم</h4>
+            </div>
+            <div class="card-body">
+        @if(count($files) > 0)
+            @foreach($files as $file)
+                @php
+                    $fileExtension = pathinfo($file, PATHINFO_EXTENSION);
+                @endphp
+
+                @if(in_array($fileExtension, ['jpg', 'jpeg', 'png', 'gif']))
+                    <!-- نمایش تصویر -->
+                        <div class="mb-2">
+                            <a href="{{ asset('storage/'. $file) }}" target="_blank"><img src="{{ asset('storage/'. $file) }}" alt="تصویر مرخصی" class="img-thumbnail" width="150"></a>
+                        </div>
+                @else
+                    <!-- نمایش لینک دانلود برای فایل‌های دیگر -->
+                        <div class="mb-2">
+                            <a href="{{ asset('storage/' . $file) }}" target="_blank" class="btn btn-sm btn-primary">
+                                دانلود فایل
+                            </a>
+                        </div>
+                    @endif
+                @endforeach
+            @else
+                <span class="text-muted">فایلی آپلود نشده است</span>
+            @endif
+        </div>
         </div>
 
 <hr>
-        <button type="submit" class="btn btn-primary">{{__('submit')}}</button>
-    </form>
+<div class="card">
+  <div class="card-header">
+<h3>نظر مدیریت محترم گروه : </h3></div>
+<div class="card-body">
+                    <div class="col-md-8">
+                      @if ($morakhasi->status=='approved')
+                      <h6 class="badge badge-success">با مرخصی شما موافقت می گردد.</h6>
+                      @elseif($morakhasi->status=='rejected')
+                      <span class="badge badge-warning">با مرخصی شما موافقت نمی گردد.</span>
+                     @elseif($morakhasi->status=='pending')
+                     <span class="badge badge-primary">در حال بررسی می باشد</span>
+
+                    @endif
+                    </div>
+                    <div class="card-body">
+
+
+                       <div class="col-md-12">
+                        <label for="contact_info" class="form-label">{{__('morakhasi.comments')}}</label><br>
+
+                        <textarea disabled name="comments" style="width: 100%;">{{$approval->comments}}</textarea>
+
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+</div>
     </div>
             </div>
             <!-- /.card-body -->

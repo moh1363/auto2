@@ -89,6 +89,35 @@
             </div>
 
         </div>
+        <div class="form-row">
+
+          <div class="form-group col-md-6">
+              <label for="inputFamily">{{__('users.mande_morakhasi')}}</label>
+              <input type="number" class="form-control" name="mande_morakhasi" id="inputFamily" value="{{old('mande_morakhasi')}}">
+          </div>
+
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Role:</strong>
+                <select name="roles[]" class="form-control" multiple="multiple">
+                    @foreach ($roles as $value => $label)
+                        <option value="{{ $value }}">
+                            {{ $label }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Role:</strong>
+                    @foreach ($permissions as $permission)
+                    <input name="permissions[]" class="form-control" type="checkbox" value="{{ $permission->id }}"> <strong>{{ $permission->name }}</strong>
+
+                                  @endforeach
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">{{__('submit')}}</button>
     </form>
     </div>

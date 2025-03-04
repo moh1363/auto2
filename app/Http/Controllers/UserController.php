@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\PostTitle;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 use Illuminate\Http\Request;
 
@@ -16,9 +19,12 @@ class UserController extends Controller
         return view ('Users.index',compact('users'));
     }
     public function create(){
+        $permissions=Permission::all();
+        $roles = Role::pluck('name','name')->all();
+
         $posttitles=PostTitle::all();
 
-        return view ('users.create',compact('posttitles'));
+        return view ('users.create',compact('posttitles','roles','permissions'));
     }
     public function store(Request $request)
     {
@@ -41,8 +47,13 @@ class UserController extends Controller
         $user->phone = $request->get('phone');
         $user->personnel_id = $request->get('personnel_id');
         $user->post_title_id = $request->get('post_title_id');
+        $user->mande_morakhasi = $request->get('mande_morakhasi');
+
         $user->email = $request->get('email');
         $user->password = bcrypt('123456');
+        $user->assignRole($request->input('roles'));
+        $user->givePermissionTo($request->input('permissions'));
+
         $user->save();
         // $user->assignRole($request->get('roles'));
         // $permissionsids = $request->get('permissions');
@@ -54,10 +65,12 @@ class UserController extends Controller
     }
 
     public function edit($id){
+        $roles = Role::pluck('name','name')->all();
+
         $user=User::find($id);
         $posttitles=PostTitle::all();
 
-        return view ('users.edit',compact('posttitles','user'));
+        return view ('users.edit',compact('posttitles','user','roles'));
     }
     public function update(Request $request,$id)
     {
@@ -81,8 +94,13 @@ class UserController extends Controller
         $user->personnel_id = $request->get('personnel_id');
         $user->post_title_id = $request->get('post_title_id');
         $user->email = $request->get('email');
+        $user->mande_morakhasi = $request->get('mande_morakhasi');
+
         $user->password = bcrypt('123456');
         $user->update();
+        DB::table('model_has_roles')->where('model_id',$id)->delete();
+
+        $user->assignRole($request->input('roles'));
         // $user->assignRole($request->get('roles'));
         // $permissionsids = $request->get('permissions');
 
@@ -99,6 +117,7 @@ class UserController extends Controller
     }
 
     public function show($id){
+
         $user=User::find($id);
         $posttitles=PostTitle::all();
 
